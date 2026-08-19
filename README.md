@@ -35,9 +35,21 @@ StandardScaler & Feature Engineering Validation
 
 ### 2. Feature Engineering Experiment (Volume + Weight + Volume/Weight Ratio)
 
-| Model Architecture | $R^2$ Fit | 5-Fold CV $R^2$ ($\text{Mean} \pm \text{Std}$) | MAE (g/km) | RMSE | Feature Engineering Impact |
+| Model Architecture | $R^2$ Fit | 5-Fold CV $R^2$ ($\text{Mean} \pm \text{Std}$) | MAE (g/km) | RMSE | Empirical Impact |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **OLS with Engineered Ratio** | **0.3798** | **0.3300 $\pm$ 0.0850** | **5.0702** | **5.7885** | $+0.0032$ $R^2$ improvement (Empirically verified) |
+| **OLS with Engineered Ratio** | **0.3798** | **0.3300 $\pm$ 0.0850** | **5.0702** | **5.7885** | Marginal $+0.0032$ $R^2$ gain; CV $R^2$ unchanged |
+
+---
+
+## 💡 Current Findings
+
+The current implementation evaluates ordinary least squares regression using vehicle engine volume and weight, with an additional experiment testing a volume-to-weight ratio feature.
+
+The engineered ratio produced a marginal improvement in training-set $R^2$ ($0.3766 \rightarrow 0.3798$), while the 5-fold cross-validation $R^2$ remained $0.3300 \pm 0.0850$.
+
+This indicates that the engineered feature provides limited additional predictive value under the current dataset and evaluation setup.
+
+Additional regularized and ensemble models are part of the planned experimental roadmap and are not treated as validated results until implemented and evaluated.
 
 ---
 
@@ -66,7 +78,7 @@ co2-emission-prediction/
 ├── .gitignore                                 # Exclusion rules for caches & virtualenvs
 ├── requirements.txt                           # Dependency manifest
 ├── data/
-│   ├── README.md                              # Dataset schema & column specifications
+│   └── README.md                              # Dataset schema & column specifications
 │   └── data.csv                               # Clean 36-sample vehicle emission dataset
 ├── docs/
 │   └── methodology.md                        # Mathematical specs for regression & 5-fold CV
