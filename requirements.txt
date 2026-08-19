@@ -1,5 +1,9 @@
-1. Pandas
-2. NumPy
-3. Matplotlib
-4. Seaborn
-5. Scikit-learn
+# Core Data Science & Regression
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.2.0
+
+# Visualization & Testing
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pytest>=7.3.0
